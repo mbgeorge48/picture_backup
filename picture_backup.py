@@ -45,9 +45,16 @@ class PictureBackupinator:
         self.check_destination_folder()
 
         if self.skip_duplicates:
+            print("Scanning for destination duplicates")
             self.scan_directories(self.destination_folder)
+        print("Scanning the source folder")
         self.scan_directories(self.source_folder)
+
+        print("Starting to copy files")
         self.copy_files()
+
+        # Want to write the hashes to a file so that it's much quicker to start
+        # Then once it's copied add the hash to the file/list
 
     def get_parameters(self, value):
         return_value = True
